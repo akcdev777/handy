@@ -11,4 +11,7 @@ public interface ServiceProviderRepository extends MongoRepository<ServiceProvid
 
     // Custom query to find by email (for login or uniqueness checks)
     ServiceProvider findByEmail(String email);
+
+    // Find Service Providers by type (e.g., "hairdresser")
+    List<ServiceProvider> findByType(String type);
 }

@@ -11,4 +11,7 @@ public interface ServiceRepository extends MongoRepository<Service, String> {
 
     // Custom query to find services within a price range
     List<Service> findByPriceBetween(double minPrice, double maxPrice);
+
+    // Find Services by name
+    List<Service> findByName(String name);
 }

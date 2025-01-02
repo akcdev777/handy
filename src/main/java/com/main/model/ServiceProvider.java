@@ -1,5 +1,11 @@
 package com.main.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import org.springframework.asm.SpringAsmInfo;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,6 +17,8 @@ public class ServiceProvider {
     @Id
     private String id;
     private String name;
+    @Size(min = 8, message = "Password must be at least 8 characters")
+    private String password;
     private String email;
     private String phone;
     private String address;
@@ -30,15 +38,31 @@ public class ServiceProvider {
         this.name = name;
         this.type = type;
         this.businessStore = businessStore;
+    }
 
+    @JsonCreator
+    public ServiceProvider(
+            @JsonProperty("name") String name,
+            @JsonProperty("email") String email,
+            @JsonProperty("phone") String phone,
+            @JsonProperty("address") String address,
+            @JsonProperty("city") String city,
+            @JsonProperty("password") String password) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.city = city;
+        this.password = password;
     }
 
     // Parameterized constructor
-    public ServiceProvider(String name, String email, String phone, String address, String city, String state,
+    public ServiceProvider(String name, String email, String password, String phone, String address, String city, String state,
                            String zip, String country, String description, String type, double rating,
                            String imageUrl, String website, String socialMedia, BusinessStore businessStore) {
         this.name = name;
         this.email = email;
+        this.password = password;
         this.phone = phone;
         this.address = address;
         this.city = city;
@@ -72,6 +96,14 @@ public class ServiceProvider {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setEmail(String email) {
