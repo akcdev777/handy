@@ -1,10 +1,11 @@
-package handy;
+package com.main;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HandyApplicationTests {
+class
+HandyApplicationTests {
 
     @Test
     void contextLoads() {
