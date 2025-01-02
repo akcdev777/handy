@@ -1,4 +1,4 @@
-package com.main.handy;
+package handy;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
